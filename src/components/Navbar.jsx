@@ -6,7 +6,7 @@ import { categories, types } from "../utils/Data";
 const menuStyle = "md:hidden flex flex-col bg-violet-900 rounded-lg md:py-2 md:overflow-visible overflow-hidden left-0 right-0 absolute w-auto m-3 mt-8 md:w-fit";
 const mdMenuStyle = "md:before:absolute md:before:-top-6 md:before:p-4 md:before:px-8 hidden md:group-hover:flex md:hover:flex flex-col bg-violet-900 rounded-lg md:py-2 md:overflow-visible overflow-hidden left-0 right-0 absolute w-auto mx-3 mt-4 md:w-fit";
 
-const menuElementStyle = "peer curosr-pointer flex w-full p-3 px-5 md:px-10 text-sm hover:bg-black/10 border-b-2 border-black/10 md:border-0";
+const menuElementStyle = "peer cursor-pointer flex w-full p-3 px-5 md:px-10 text-sm hover:bg-black/10 border-b-2 border-black/10 md:border-0";
 const subMenuStyle =
   "py-2 flex flex-row flex-wrap bg-neutral-900 md:absolute md:top-0 md:left-32 md:-z-10 md:h-full md:w-[500px] md:rounded-lg md:pl-5 md:flex md:flex-row md:flex-wrap bg-neutral-900 md:origin-left md:scale-x-0  md:peer-hover:scale-x-100 md:peer-hover:transition-all md:peer-hover:duration-150 md:peer-hover:ease-in-out";
 const mdGenresSubMenuStyle =
@@ -24,14 +24,15 @@ const Navbar = () => {
 
   const handleToggle = (param, setParam) => {
     console.log(windowDimensions)
-    if(windowDimensions.width < 786){
+    if(windowDimensions.width < 768){
       console.log(param);
       setParam(!param);
     }
   };
 
   useEffect(() => {
-    setToggleMenu(false);
+    if(windowDimensions.width >= 768)
+      setToggleMenu(false);
   }, [windowDimensions.width]);
   
 
