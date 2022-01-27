@@ -4,15 +4,15 @@ import { RiMenuFill } from "react-icons/ri";
 import { categories, types } from "../utils/Data";
 
 const menuStyle = "md:hidden flex flex-col bg-violet-900 rounded-lg md:py-2 md:overflow-visible overflow-hidden left-0 right-0 absolute w-auto m-3 mt-8 md:w-fit";
-const mdMenuStyle = "hidden md:flex flex-col bg-violet-900 rounded-lg md:py-2 md:overflow-visible overflow-hidden left-0 right-0 absolute w-auto m-3 mt-8 md:w-fit";
+const mdMenuStyle = "md:before:absolute md:before:-top-6 md:before:p-4 md:before:px-8 hidden md:group-hover:flex md:hover:flex flex-col bg-violet-900 rounded-lg md:py-2 md:overflow-visible overflow-hidden left-0 right-0 absolute w-auto mx-3 mt-4 md:w-fit";
 
-const menuElementStyle = "curosr-pointer flex w-full p-3 px-5 md:px-10 text-sm hover:bg-black/10 border-b-2 border-black/10 md:border-0";
+const menuElementStyle = "peer curosr-pointer flex w-full p-3 px-5 md:px-10 text-sm hover:bg-black/10 border-b-2 border-black/10 md:border-0";
 const subMenuStyle =
-  "py-2 flex flex-row flex-wrap bg-neutral-900 md:absolute md:top-0 md:left-32 md:-z-10 md:h-full md:w-[500px] md:rounded-lg md:pl-5 md:flex md:flex-row md:flex-wrap bg-neutral-900 md:origin-left md:scale-x-0  md:group-hover:scale-x-100 md:group-hover:transition-all md:group-hover:duration-150 md:group-hover:ease-in-out";
+  "py-2 flex flex-row flex-wrap bg-neutral-900 md:absolute md:top-0 md:left-32 md:-z-10 md:h-full md:w-[500px] md:rounded-lg md:pl-5 md:flex md:flex-row md:flex-wrap bg-neutral-900 md:origin-left md:scale-x-0  md:peer-hover:scale-x-100 md:peer-hover:transition-all md:peer-hover:duration-150 md:peer-hover:ease-in-out";
 const mdGenresSubMenuStyle =
-  "hidden md:py-2 md:absolute md:top-0 md:left-32 md:-z-10 md:h-full md:w-[500px] md:rounded-lg md:pl-5 md:flex md:flex-row md:flex-wrap bg-neutral-900 md:origin-left md:scale-x-0  md:group-hover:scale-x-100 md:group-hover:transition-all md:group-hover:duration-150 md:group-hover:ease-in-out`";
+  "hidden md:py-2 md:absolute md:top-0 md:left-32 md:-z-10 md:h-full md:w-[500px] md:rounded-lg md:pl-5 md:flex md:flex-row md:flex-wrap bg-neutral-900 md:origin-left md:scale-x-0  md:peer-hover:scale-x-100 md:peer-hover:transition-all md:peer-hover:duration-150 md:peer-hover:ease-in-out`";
 const mdTypesSubMenuStyle =
-  "hidden md:py-2 md:absolute md:top-0 md:left-32 md:-z-10 md:h-full md:w-32 md:rounded-lg md:pl-5 md:flex md:flex-col bg-neutral-900 md:origin-left md:scale-x-0  md:group-hover:scale-x-100 md:group-hover:transition-all md:group-hover:duration-150 md:group-hover:ease-in-out`";
+  "hidden md:py-2 md:absolute md:top-0 md:left-32 md:-z-10 md:h-full md:w-32 md:rounded-lg md:pl-5 md:flex md:flex-col bg-neutral-900 md:origin-left md:scale-x-0  md:peer-hover:scale-x-100 md:peer-hover:transition-all md:peer-hover:duration-150 md:peer-hover:ease-in-out`";
 const subGenresMenuElementStyle = "flex h-fit text-xs px-5 py-1 w-1/4 hover:bg-white/5 text-zinc-500";
 const subTypesMenuElementStyle = "flex h-fit text-xs px-5 py-1 w-full hover:bg-white/5 text-zinc-500";
 const Navbar = () => {
@@ -28,8 +28,12 @@ const Navbar = () => {
       console.log(param);
       setParam(!param);
     }
-
   };
+
+  useEffect(() => {
+    setToggleMenu(false);
+  }, [windowDimensions.width]);
+  
 
   function getWindowDimensions() {
     const { innerWidth: width, innerHeight: height } = window;
@@ -52,7 +56,7 @@ const Navbar = () => {
     <div className="flex flex-row px-2  items-center gap-4">
       {/* Mobile menu toggle bar */}
 
-      <div className="">
+      <div className="group">
         <button className="flex" onClick={() => handleToggle(isToggleMenu, setToggleMenu)}>
           <RiMenuFill fontSize={40} />
         </button>
@@ -63,7 +67,7 @@ const Navbar = () => {
               HOME
             </a>
           </div>
-          <div className="group">
+          <div className>
             <a className={menuElementStyle} onClick={() => handleToggle(showGenres, setShowGenres)}>
               GENRES
             </a>
