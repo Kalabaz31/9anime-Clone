@@ -5,6 +5,10 @@ module.exports = {
       colors: {
         transparent: "transparent",
       },
+      fontFamily: {
+        'sans': ['Poppins','Roboto', 'Helvetica', 'Arial', 'sans-serif']
+      }
+
     },
   },
   plugins: [],

@@ -3,8 +3,9 @@ import { RiMenuFill, RiUser3Fill } from "react-icons/ri";
 import { IoMdSearch } from "react-icons/io";
 
 import { categories, types } from "../utils/Data";
+import AuthForm from "./AuthForm";
 
-const menuStyle = "md:hidden flex flex-col bg-violet-900 rounded-lg md:py-2 md:overflow-visible overflow-hidden left-0 right-0 absolute w-auto m-3 mt-8 md:w-fit";
+const menuStyle = "md:hidden flex flex-col bg-violet-900 rounded-lg md:py-2 md:overflow-visible left-0 right-0 absolute w-auto m-3 mt-8 md:w-fit";
 const mdMenuStyle =
   "md:before:absolute md:before:-top-6 md:before:p-4 md:before:px-8 hidden md:group-hover:flex md:hover:flex flex-col bg-violet-900 rounded-lg md:py-2 md:overflow-visible overflow-hidden left-0 right-0 absolute w-auto mx-3 mt-4 md:w-fit";
 
@@ -22,12 +23,12 @@ const Navbar = () => {
   const [showGenres, setShowGenres] = useState(false);
   const [showTypes, setShowTypes] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
+  const [showForm, setShowForm] = useState(false);
 
   const [mobileSearchClicked, setMobileSearchClicked] = useState(false);
   const [windowDimensions, setWindowDimensions] = useState(getWindowDimensions());
 
   const handleToggle = (param, setParam) => {
-    console.log(windowDimensions);
     if (windowDimensions.width < 768) {
       console.log(param);
       setParam(!param);
@@ -129,18 +130,18 @@ const Navbar = () => {
           <a className="flex items-center">
             <img src="https://9anime.vc/images/logo.png" alt="logo" className="w-48" />
           </a>
-        <div className="flex md:relative">
-          <input
-            type="text"
-            placeholder="Enter anime name"
-            className={
-              showSearch
-                ? "absolute top-16 w-full left-0 bg-violet-900 md:relative md:top-0 md:hover:bg-zinc-700 md:focus:bg-zinc-700 md:bg-zinc-800 h-12 p-3 pr-12 pl-5 rounded-full text-sm outline-none"
-                : "hidden"
-            }
-          />
-          <IoMdSearch className={showSearch ? "absolute h-12 w-12 px-2 top-16 md:top-0 right-0 text-zinc-400 cursor-pointer md:hover:text-violet-900 " : "hidden"} />
-        </div>
+          <div className="flex md:relative">
+            <input
+              type="text"
+              placeholder="Enter anime name"
+              className={
+                showSearch
+                  ? "absolute top-16 w-full left-0 bg-violet-900 md:relative md:top-0 md:hover:bg-zinc-700 md:focus:bg-zinc-700 md:bg-zinc-800 h-12 p-3 pr-12 pl-5 rounded-full text-sm outline-none"
+                  : "hidden"
+              }
+            />
+            <IoMdSearch className={showSearch ? "absolute h-12 w-12 px-2 top-16 md:top-0 right-0 text-zinc-400 cursor-pointer md:hover:text-violet-900 " : "hidden"} />
+          </div>
         </div>
 
         <IoMdSearch
@@ -151,10 +152,11 @@ const Navbar = () => {
           className="flex md:hidden h-12 w-12 px-2 right-20 text-zinc-400 cursor-pointer hover:text-violet-900 "
         />
       </div>
-      <button type="button" className="p-2 min-w-max md:px-8 flex items-center justify-center bg-violet-900 rounded-full cursor-pointer ">
-        <span className="hidden md:flex w-full h-full">  Sign In </span>
-        <RiUser3Fill fontSize={24} className="flex md:hidden w-full h-full"/>
+      <button type="button" onClick={() => setShowForm(true)} className="p-2 min-w-max md:px-8 flex items-center justify-center bg-violet-900 rounded-full cursor-pointer ">
+        <span className="hidden md:flex w-full h-full"> Sign In </span>
+        <RiUser3Fill fontSize={24} className="flex md:hidden w-full h-full" />
       </button>
+      <AuthForm setShowForm={() => setShowForm()} showForm={showForm} />
     </div>
   );
 };
