@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { RiMenuFill } from "react-icons/ri";
+import { IoMdSearch } from "react-icons/io";
 
 import { categories, types } from "../utils/Data";
 
 const menuStyle = "md:hidden flex flex-col bg-violet-900 rounded-lg md:py-2 md:overflow-visible overflow-hidden left-0 right-0 absolute w-auto m-3 mt-8 md:w-fit";
-const mdMenuStyle = "md:before:absolute md:before:-top-6 md:before:p-4 md:before:px-8 hidden md:group-hover:flex md:hover:flex flex-col bg-violet-900 rounded-lg md:py-2 md:overflow-visible overflow-hidden left-0 right-0 absolute w-auto mx-3 mt-4 md:w-fit";
+const mdMenuStyle =
+  "md:before:absolute md:before:-top-6 md:before:p-4 md:before:px-8 hidden md:group-hover:flex md:hover:flex flex-col bg-violet-900 rounded-lg md:py-2 md:overflow-visible overflow-hidden left-0 right-0 absolute w-auto mx-3 mt-4 md:w-fit";
 
 const menuElementStyle = "peer cursor-pointer flex w-full p-3 px-5 md:px-10 text-sm hover:bg-black/10 border-b-2 border-black/10 md:border-0";
 const subMenuStyle =
@@ -19,22 +21,29 @@ const Navbar = () => {
   const [isToggleMenu, setToggleMenu] = useState(false);
   const [showGenres, setShowGenres] = useState(false);
   const [showTypes, setShowTypes] = useState(false);
+  const [showSearch, setShowSearch] = useState(false);
 
+  const [mobileSearchClicked, setMobileSearchClicked] = useState(false);
   const [windowDimensions, setWindowDimensions] = useState(getWindowDimensions());
 
   const handleToggle = (param, setParam) => {
-    console.log(windowDimensions)
-    if(windowDimensions.width < 768){
+    console.log(windowDimensions);
+    if (windowDimensions.width < 768) {
       console.log(param);
       setParam(!param);
     }
   };
 
   useEffect(() => {
-    if(windowDimensions.width >= 768)
+    if (windowDimensions.width >= 768) {
       setToggleMenu(false);
+      setShowSearch(true);
+    }else{
+      if(!mobileSearchClicked){
+        setShowSearch(false);
+      }
+    }
   }, [windowDimensions.width]);
-  
 
   function getWindowDimensions() {
     const { innerWidth: width, innerHeight: height } = window;
@@ -49,12 +58,12 @@ const Navbar = () => {
       setWindowDimensions(getWindowDimensions());
     }
 
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   return (
-    <div className="flex flex-row px-2  items-center gap-4">
+    <div className="flex flex-row px-2  items-center gap-4 w-full relative">
       {/* Mobile menu toggle bar */}
 
       <div className="group">
@@ -118,6 +127,20 @@ const Navbar = () => {
       <a className="flex items-center">
         <img src="https://9anime.vc/images/logo.png" alt="logo" className="w-48" />
       </a>
+
+      <div className="flex md:relative">
+        <input
+          type="text"
+          placeholder="Enter anime name"
+          className={
+            showSearch
+              ? "absolute top-16 w-full left-0 bg-violet-900 md:relative md:top-0 md:hover:bg-zinc-700 md:focus:bg-zinc-700 md:bg-zinc-800 h-12 p-3 pr-12 pl-5 rounded-full text-sm outline-none"
+              : "hidden"
+          }
+        />
+        <IoMdSearch className={showSearch ? "absolute h-12 w-12 px-2 top-16 md:top-0 right-0 text-zinc-400 cursor-pointer md:hover:text-violet-900 " : "hidden"} />
+      </div>
+      <IoMdSearch onClick={() => {handleToggle(showSearch, setShowSearch); handleToggle(mobileSearchClicked, setMobileSearchClicked); }} className="flex md:hidden absolute  h-12 w-12 px-2 right-0 text-zinc-400 cursor-pointer hover:text-violet-900 " />
     </div>
   );
 };
