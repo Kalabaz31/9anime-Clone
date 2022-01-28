@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { RiMenuFill } from "react-icons/ri";
+import { RiMenuFill, RiUser3Fill } from "react-icons/ri";
 import { IoMdSearch } from "react-icons/io";
 
 import { categories, types } from "../utils/Data";
@@ -38,8 +38,8 @@ const Navbar = () => {
     if (windowDimensions.width >= 768) {
       setToggleMenu(false);
       setShowSearch(true);
-    }else{
-      if(!mobileSearchClicked){
+    } else {
+      if (!mobileSearchClicked) {
         setShowSearch(false);
       }
     }
@@ -63,84 +63,98 @@ const Navbar = () => {
   }, []);
 
   return (
-    <div className="flex flex-row px-2  items-center gap-4 w-full relative">
+    <div className="flex flex-row px-2  items-center gap-2 w-full relative">
       {/* Mobile menu toggle bar */}
 
-      <div className="group">
-        <button className="flex" onClick={() => handleToggle(isToggleMenu, setToggleMenu)}>
-          <RiMenuFill fontSize={40} />
-        </button>
-
-        <div className={isToggleMenu ? menuStyle : mdMenuStyle}>
-          <div>
-            <a href="/" className={menuElementStyle}>
-              HOME
-            </a>
-          </div>
-          <div className>
-            <a className={menuElementStyle} onClick={() => handleToggle(showGenres, setShowGenres)}>
-              GENRES
-            </a>
-            <div className={showGenres ? subMenuStyle : mdGenresSubMenuStyle}>
-              {categories.map((category) => (
-                <a href="/a" key={category} className={subGenresMenuElementStyle}>
-                  {category}
-                </a>
-              ))}
-            </div>
-          </div>
+      <div className=" flex flex-row justify-between items-center  gap-4 w-full">
+        <div className="flex flex-row  items-center gap-4">
           <div className="group">
-            <a className={menuElementStyle} onClick={() => handleToggle(showTypes, setShowTypes)}>
-              TYPES
-            </a>
-            <div className={showTypes ? subMenuStyle : mdTypesSubMenuStyle}>
-              {types.map((type) => (
-                <a href="/a" key={type} className={subTypesMenuElementStyle}>
-                  {type}
+            <button className="flex" onClick={() => handleToggle(isToggleMenu, setToggleMenu)}>
+              <RiMenuFill fontSize={40} />
+            </button>
+
+            <div className={isToggleMenu ? menuStyle : mdMenuStyle}>
+              <div>
+                <a href="/" className={menuElementStyle}>
+                  HOME
                 </a>
-              ))}
+              </div>
+              <div className>
+                <a className={menuElementStyle} onClick={() => handleToggle(showGenres, setShowGenres)}>
+                  GENRES
+                </a>
+                <div className={showGenres ? subMenuStyle : mdGenresSubMenuStyle}>
+                  {categories.map((category) => (
+                    <a href="/a" key={category} className={subGenresMenuElementStyle}>
+                      {category}
+                    </a>
+                  ))}
+                </div>
+              </div>
+              <div className="group">
+                <a className={menuElementStyle} onClick={() => handleToggle(showTypes, setShowTypes)}>
+                  TYPES
+                </a>
+                <div className={showTypes ? subMenuStyle : mdTypesSubMenuStyle}>
+                  {types.map((type) => (
+                    <a href="/a" key={type} className={subTypesMenuElementStyle}>
+                      {type}
+                    </a>
+                  ))}
+                </div>
+              </div>
+              <div>
+                <a href="/" className={menuElementStyle}>
+                  UPDATED
+                </a>
+              </div>
+              <div>
+                <a href="/" className={menuElementStyle}>
+                  ADDED
+                </a>
+              </div>
+              <div>
+                <a href="/" className={menuElementStyle}>
+                  ONGOING
+                </a>
+              </div>
+              <div>
+                <a href="/" className={menuElementStyle}>
+                  UPCOMING
+                </a>
+              </div>
             </div>
           </div>
-          <div>
-            <a href="/" className={menuElementStyle}>
-              UPDATED
-            </a>
-          </div>
-          <div>
-            <a href="/" className={menuElementStyle}>
-              ADDED
-            </a>
-          </div>
-          <div>
-            <a href="/" className={menuElementStyle}>
-              ONGOING
-            </a>
-          </div>
-          <div>
-            <a href="/" className={menuElementStyle}>
-              UPCOMING
-            </a>
-          </div>
+
+          <a className="flex items-center">
+            <img src="https://9anime.vc/images/logo.png" alt="logo" className="w-48" />
+          </a>
+        <div className="flex md:relative">
+          <input
+            type="text"
+            placeholder="Enter anime name"
+            className={
+              showSearch
+                ? "absolute top-16 w-full left-0 bg-violet-900 md:relative md:top-0 md:hover:bg-zinc-700 md:focus:bg-zinc-700 md:bg-zinc-800 h-12 p-3 pr-12 pl-5 rounded-full text-sm outline-none"
+                : "hidden"
+            }
+          />
+          <IoMdSearch className={showSearch ? "absolute h-12 w-12 px-2 top-16 md:top-0 right-0 text-zinc-400 cursor-pointer md:hover:text-violet-900 " : "hidden"} />
         </div>
-      </div>
+        </div>
 
-      <a className="flex items-center">
-        <img src="https://9anime.vc/images/logo.png" alt="logo" className="w-48" />
-      </a>
-
-      <div className="flex md:relative">
-        <input
-          type="text"
-          placeholder="Enter anime name"
-          className={
-            showSearch
-              ? "absolute top-16 w-full left-0 bg-violet-900 md:relative md:top-0 md:hover:bg-zinc-700 md:focus:bg-zinc-700 md:bg-zinc-800 h-12 p-3 pr-12 pl-5 rounded-full text-sm outline-none"
-              : "hidden"
-          }
+        <IoMdSearch
+          onClick={() => {
+            handleToggle(showSearch, setShowSearch);
+            handleToggle(mobileSearchClicked, setMobileSearchClicked);
+          }}
+          className="flex md:hidden h-12 w-12 px-2 right-20 text-zinc-400 cursor-pointer hover:text-violet-900 "
         />
-        <IoMdSearch className={showSearch ? "absolute h-12 w-12 px-2 top-16 md:top-0 right-0 text-zinc-400 cursor-pointer md:hover:text-violet-900 " : "hidden"} />
       </div>
-      <IoMdSearch onClick={() => {handleToggle(showSearch, setShowSearch); handleToggle(mobileSearchClicked, setMobileSearchClicked); }} className="flex md:hidden absolute  h-12 w-12 px-2 right-0 text-zinc-400 cursor-pointer hover:text-violet-900 " />
+      <button type="button" className="p-2 min-w-max md:px-8 flex items-center justify-center bg-violet-900 rounded-full cursor-pointer ">
+        <span className="hidden md:flex w-full h-full">  Sign In </span>
+        <RiUser3Fill fontSize={24} className="flex md:hidden w-full h-full"/>
+      </button>
     </div>
   );
 };
