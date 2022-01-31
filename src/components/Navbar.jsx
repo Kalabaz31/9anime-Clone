@@ -64,7 +64,7 @@ const Navbar = () => {
   }, []);
 
   return (
-    <div className="flex flex-row px-2  items-center gap-2 w-full relative">
+    <div className="flex flex-row px-2  items-center gap-2 w-full relative z-10">
       {/* Mobile menu toggle bar */}
 
       <div className=" flex flex-row justify-between items-center  gap-4 w-full">

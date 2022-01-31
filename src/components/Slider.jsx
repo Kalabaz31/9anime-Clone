@@ -54,14 +54,14 @@ const Slider = () => {
 
 
   return (
-    <div className="group relative w-full h-[18rem] my-5 rounded-lg overflow-hidden">
+    <div className="group relative w-full h-[12rem] md:h-[22rem] my-5 rounded-lg overflow-hidden">
       {animes.map((anime) => (
         <div className={active === anime.index ? "opacity-100" : "opacity-0"} key={anime.title}>
-          <img className={active === anime.index ? "transition duration-1000 ease-out absolute top-0 left-0 w-full h-full object-fill" : "opacity-50"} src={anime.cover} alt="anime cover" />
+          <img className={active === anime.index ? "transition duration-1000 ease-out absolute top-0 left-0 w-full h-full object-cover" : "opacity-50"} src={anime.cover} alt="anime cover" />
 
-          <div className="absolute bottom-0 flex flex-row justify-between items-center bg-violet-900 w-full p-4">
-            <h1 className={active === anime.index ? "transition duration-700 ease-in-out font-bold text-xl p-3" : "opacity-50"}>{anime.title}</h1>
-            <a className="text-black bg-white rounded-full px-4 py-2 text-xl" href="#">
+          <div className="absolute bottom-0 flex flex-row  md:justify-between items-center bg-violet-900 w-full md:p-4">
+            <h1 className={active === anime.index ? "transition duration-700 ease-in-out md:font-bold md:text-xl p-3 whitespace-nowrap" : "opacity-50"}>{anime.title}</h1>
+            <a className="hidden md:flex text-black bg-white rounded-full px-4 py-2 text-xl" href="#">
               Watch now
             </a>
           </div>

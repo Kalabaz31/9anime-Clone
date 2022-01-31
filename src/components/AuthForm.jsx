@@ -9,7 +9,7 @@ const AuthForm = ({ setShowForm, showForm }) => {
   const [register, setFormType] = useState(0);
 
   return (
-    <div className={showForm ? "bg-black/50 min-h-screen absolute flex justify-center items-center -bottom-5 -left-5 -right-5 -top-5" : "hidden"}>
+    <div className={showForm ? "group bg-zinc-900/75 min-h-screen absolute flex justify-center items-center -bottom-5 -left-5 -right-5 -top-5 z-10":"hidden"}>
       <div onClick={() => setShowForm(false)} className="absolute -bottom-5 -left-5 -right-5 -top-5 w-full h-full"></div>
 
       {register === 0 ? (
