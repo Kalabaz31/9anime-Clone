@@ -42,6 +42,17 @@ export const categories = [
   "Vampire",
 ];
 
+export const seasons = [
+  "Spring",
+  "Summer",
+  "Fall",
+  "Winter"
+];
+
+export const years = [
+  "2010","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022"
+];
+
 export const types = ["Movies", "TV Series", "OVAs", "ONAs", "Specials"];
 
 export const animes = [

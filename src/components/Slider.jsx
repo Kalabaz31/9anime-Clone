@@ -54,7 +54,7 @@ const Slider = () => {
 
 
   return (
-    <div className="group relative w-full h-[12rem] md:h-[22rem] my-5 rounded-lg overflow-hidden">
+    <div className="group relative w-full h-[12rem] md:h-[22rem] rounded-lg overflow-hidden">
       {animes.map((anime) => (
         <div className={active === anime.index ? "opacity-100" : "opacity-0"} key={anime.title}>
           <img className={active === anime.index ? "transition duration-1000 ease-out absolute top-0 left-0 w-full h-full object-cover" : "opacity-50"} src={anime.cover} alt="anime cover" />
