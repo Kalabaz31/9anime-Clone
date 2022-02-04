@@ -5,8 +5,8 @@ import { RiPlayCircleLine } from "react-icons/ri";
 
 const Pin = ({anime}) => {
   return (
-    <div className="group w-1/2 md:w-1/4 lg:w-1/5 xl:w-1/6 p-2  overflow-y-hidden mb-1">
-      <div className="relative w-full flex overflow-hidden rounded-lg h-[13rem] md:h-[15rem] lg:h-[17rem] ">
+    <div className="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/5  p-2  overflow-y-hidden mb-1	">
+      <div className="relative w-full flex overflow-hidden rounded-lg aspect-[3/4] ">
         <img src={anime.cover} alt="anime-cover" className="object-cover w-full" />
 
         <button className="flex justify-center items-center w-full bg-black/75 absolute top-0 h-full opacity-0 group-hover:opacity-100 transition ease-in-out duration-150">

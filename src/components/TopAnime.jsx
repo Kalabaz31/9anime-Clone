@@ -4,8 +4,8 @@ import { topAnimes, topAnimesMonth, topAnimesWeek } from "../utils/Data";
 
 import { RiEyeLine } from "react-icons/ri";
 
-const btnHeaderStyle = "text-zinc-500  lg:text-sm";
-const btnActiveHeaderStyle = "text-white  lg:text-sm";
+const btnHeaderStyle = "text-zinc-500  xl:text-sm";
+const btnActiveHeaderStyle = "text-white  xl:text-sm";
 
 const tabContentStyle = "flex flex-col w-full";
 
@@ -48,15 +48,17 @@ const TopAnime = () => {
             </div>
           </div>
         }
-        <div className="flex flex-row flex-wrap lg:flex-col justify-between px-4">
+        <div className="flex flex-col md:flex-row flex-wrap xl:flex-col justify-between px-4">
           {topAnimes.map(
             (anime) =>
               anime.rank !== 1 && (
-                <div className=" group w-1/2 lg:w-full h-16 flex flex-row gap-4 items-center my-2 pr-2">
+                <div className=" group w-full md:w-1/2 xl:w-full h-16 flex flex-row gap-4 items-center my-2 pr-2">
                   <h1 className=" h-min px-3 py-1 rounded-md  border-zinc-600 border text-2xl text-zinc-600 group-hover:text-white">{anime.rank}</h1>
                   <img src={anime.cover} alt="anime-cover" className="w-10 h-full  rounded-md" />
                   <div className="flex flex-col gap-1 items-start self-start overflow-hidden h-full ">
-                    <a href="#" className="text-sm text-zinc-400 hover:text-white truncate w-full	 ">{anime.title}</a>
+                    <a href="#" className="text-sm text-zinc-400 hover:text-white truncate w-full	 ">
+                      {anime.title}
+                    </a>
                     <h1 className="text-sm text-zinc-600 flex flex-row items-center gap-1">
                       <RiEyeLine /> 900
                     </h1>
@@ -66,7 +68,6 @@ const TopAnime = () => {
           )}
         </div>
       </div>
-
 
       <div className={active === 1 ? tabContentStyle : "hidden"}>
         {
@@ -86,15 +87,17 @@ const TopAnime = () => {
             </div>
           </div>
         }
-        <div className="flex flex-row flex-wrap lg:flex-col justify-between px-4">
+        <div className="flex flex-col md:flex-row flex-wrap xl:flex-col justify-between px-4">
           {topAnimesWeek.map(
             (anime) =>
               anime.rank !== 1 && (
-                <div className=" group w-1/2 lg:w-full h-16 flex flex-row gap-4 items-center my-2 pr-2">
+                <div className=" group w-full md:w-1/2 xl:w-full h-16 flex flex-row gap-4 items-center my-2 pr-2">
                   <h1 className=" h-min px-3 py-1 rounded-md  border-zinc-600 border text-2xl text-zinc-600 group-hover:text-white">{anime.rank}</h1>
                   <img src={anime.cover} alt="anime-cover" className="w-10 h-full  rounded-md" />
                   <div className="flex flex-col gap-1 items-start self-start overflow-hidden h-full ">
-                    <a href="#" className="text-sm text-zinc-400 hover:text-white truncate w-full	 ">{anime.title}</a>
+                    <a href="#" className="text-sm text-zinc-400 hover:text-white truncate w-full	 ">
+                      {anime.title}
+                    </a>
                     <h1 className="text-sm text-zinc-600 flex flex-row items-center gap-1">
                       <RiEyeLine /> 900
                     </h1>
@@ -104,7 +107,6 @@ const TopAnime = () => {
           )}
         </div>
       </div>
-
 
       <div className={active === 2 ? tabContentStyle : "hidden"}>
         {
@@ -124,15 +126,17 @@ const TopAnime = () => {
             </div>
           </div>
         }
-        <div className="flex flex-row flex-wrap lg:flex-col justify-between px-4">
+        <div className="flex flex-col md:flex-row flex-wrap xl:flex-col justify-between px-4">
           {topAnimesMonth.map(
             (anime) =>
               anime.rank !== 1 && (
-                <div className=" group w-1/2 lg:w-full h-16 flex flex-row gap-4 items-center my-2 pr-2">
+                <div className=" group w-full md:w-1/2 xl:w-full h-16 flex flex-row gap-4 items-center my-2 pr-2">
                   <h1 className=" h-min px-3 py-1 rounded-md  border-zinc-600 border text-2xl text-zinc-600 group-hover:text-white">{anime.rank}</h1>
                   <img src={anime.cover} alt="anime-cover" className="w-10 h-full  rounded-md" />
                   <div className="flex flex-col gap-1 items-start self-start overflow-hidden h-full ">
-                    <a href="#" className="text-sm text-zinc-400 hover:text-white truncate w-full	 ">{anime.title}</a>
+                    <a href="#" className="text-sm text-zinc-400 hover:text-white truncate w-full	 ">
+                      {anime.title}
+                    </a>
                     <h1 className="text-sm text-zinc-600 flex flex-row items-center gap-1">
                       <RiEyeLine /> 900
                     </h1>
@@ -142,7 +146,6 @@ const TopAnime = () => {
           )}
         </div>
       </div>
-
     </div>
   );
 };
