@@ -5,6 +5,7 @@ import Slider from "../components/Slider";
 import Pins from "./Pins";
 import QuickFilter from "../components/QuickFilter";
 import Footer from "../components/Footer";
+import TopAnime from "../components/TopAnime";
 
 const Home = () => {
   return (
@@ -18,8 +19,10 @@ const Home = () => {
           <Pins headerTitle="Recently Updated" />
         </div>
 
-        <div className="lg:w-1/4">
+        <div className="lg:w-[22rem] gap-6 flex flex-col ">
           <QuickFilter />
+
+          <TopAnime/>
         </div>
       </div>
 

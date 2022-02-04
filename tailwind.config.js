@@ -6,19 +6,21 @@ module.exports = {
         transparent: "transparent",
       },
       fontFamily: {
-        'sans': ['Poppins','Roboto', 'Helvetica', 'Arial', 'sans-serif']
+        sans: ["Poppins", "Roboto", "Helvetica", "Arial", "sans-serif"],
       },
       borderWidth: {
-        DEFAULT: '1px',
-        '0': '0',
-        '2': '2px',
-        '3': '3px',
-        '4': '4px',
-        '6': '6px',
-        '8': '8px',
-      }
-  
+        DEFAULT: "1px",
+        0: "0",
+        2: "2px",
+        3: "3px",
+        4: "4px",
+        6: "6px",
+        8: "8px",
+      },
 
+      boxShadow: {
+        "inner": "inset 0 -80px 70px rgba(0, 0, 0, 0.3)",
+      },
     },
   },
   plugins: [],

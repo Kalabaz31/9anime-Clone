@@ -51,7 +51,7 @@ const QuickFilter = () => {
     };
   });
   return (
-    <div className="mt-16 lg:mt-0 bg-neutral-900 flex flex-col gap-3 py-3 px-4 rounded-lg ">
+    <div className=" bg-neutral-900 flex flex-col gap-3 py-3 px-4 rounded-lg ">
       <h1 className="text-xl">Quick Filter</h1>
 
       <div className="flex flex-col">
