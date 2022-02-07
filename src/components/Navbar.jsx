@@ -13,12 +13,9 @@ const menuElementStyle = "peer cursor-pointer flex w-full p-3 px-5 md:px-10 text
 const subMenuStyle =
   "py-2 flex flex-row flex-wrap bg-neutral-900 md:absolute md:top-0 md:left-32 md:-z-20 md:h-full md:w-[500px] md:rounded-lg md:pl-5 md:flex md:flex-row md:flex-wrap bg-neutral-900 md:origin-left md:scale-x-0  md:peer-hover:scale-x-100 md:peer-hover:transition-all md:peer-hover:duration-150 md:peer-hover:ease-in-out";
 const mdGenresSubMenuStyle =
-  "hidden md:py-2 md:absolute md:top-0 md:left-32 md:-z-20 md:h-full md:w-[500px] md:rounded-lg md:pl-5 md:flex md:flex-row md:flex-wrap bg-neutral-900 md:origin-left md:scale-x-0  md:peer-hover:scale-x-100 md:peer-hover:transition-all md:peer-hover:duration-150 md:peer-hover:ease-in-out`";
-const mdTypesSubMenuStyle =
-  "hidden md:py-2 md:absolute md:top-0 md:left-32 md:-z-20 md:h-full md:w-32 md:rounded-lg md:pl-5 md:flex md:flex-col bg-neutral-900 md:origin-left md:scale-x-0  md:peer-hover:scale-x-100 md:peer-hover:transition-all md:peer-hover:duration-150 md:peer-hover:ease-in-out`";
-const subGenresMenuElementStyle = "flex h-fit text-xs px-5 py-1 w-1/4 hover:bg-white/5 text-zinc-500";
-const subTypesMenuElementStyle = "flex h-fit text-xs px-5 py-1 w-full hover:bg-white/5 text-zinc-500";
-const Navbar = ({genres}) => {
+  "hover:scale-x-100 hidden md:py-2 md:absolute md:top-0 md:left-32 md:-z-20 md:h-full md:w-[300px] md:rounded-lg md:pl-5 md:flex md:flex-row md:flex-wrap bg-neutral-900 md:origin-left md:scale-x-0 md:peer-hover:scale-x-100 md:peer-hover:transition-all md:peer-hover:duration-150 md:peer-hover:ease-in-out`";
+const subGenresMenuElementStyle = "flex h-fit text-xs px-5 py-1 w-1/2 hover:bg-white/5 text-zinc-500";
+const Navbar = ({ genres }) => {
   const [isToggleMenu, setToggleMenu] = useState(false);
   const [showGenres, setShowGenres] = useState(false);
   const [showTypes, setShowTypes] = useState(false);
@@ -79,7 +76,7 @@ const Navbar = ({genres}) => {
                   HOME
                 </a>
               </div>
-              <div >
+              <div>
                 <a className={menuElementStyle} onClick={() => handleToggle(showGenres, setShowGenres)}>
                   GENRES
                 </a>
@@ -91,18 +88,7 @@ const Navbar = ({genres}) => {
                   ))}
                 </div>
               </div>
-              <div className="group">
-                <a className={menuElementStyle} onClick={() => handleToggle(showTypes, setShowTypes)}>
-                  TYPES
-                </a>
-                <div className={showTypes ? subMenuStyle : mdTypesSubMenuStyle}>
-                  {types.map((type) => (
-                    <a href="/a" key={type} className={subTypesMenuElementStyle}>
-                      {type}
-                    </a>
-                  ))}
-                </div>
-              </div>
+              
               <div>
                 <a href="/" className={menuElementStyle}>
                   UPDATED
@@ -126,13 +112,16 @@ const Navbar = ({genres}) => {
             </div>
           </div>
 
+          {/* Logo */}
           <a href="/" className="flex items-center">
             <img src="https://9anime.vc/images/logo.png" alt="logo" className="w-48" />
           </a>
+
+          {/* Search Bar */}
           <div className="flex md:relative">
             <input
               type="text"
-              placeholder="Enter anime name"
+              placeholder="Enter movie name here"
               className={
                 showSearch
                   ? "absolute top-16 w-full left-0 bg-violet-900 md:relative md:top-0 md:hover:bg-zinc-700 md:focus:bg-zinc-700 md:bg-zinc-800 h-12 p-3 pr-12 pl-5 rounded-full text-sm outline-none"
@@ -151,6 +140,8 @@ const Navbar = ({genres}) => {
           className="flex md:hidden h-12 w-12 px-2 right-20 text-zinc-400 cursor-pointer hover:text-violet-900 "
         />
       </div>
+
+      {/* Sign in button */}
       <button type="button" onClick={() => setShowForm(true)} className="p-2 min-w-max md:px-8 flex items-center justify-center bg-violet-900 rounded-full cursor-pointer ">
         <span className="hidden md:flex w-full h-full"> Sign In </span>
         <RiUser3Fill fontSize={24} className="flex md:hidden w-full h-full" />
