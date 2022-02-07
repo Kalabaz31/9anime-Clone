@@ -9,10 +9,10 @@ const Pin = ({item}) => {
       <div className="relative w-full flex overflow-hidden rounded-lg aspect-[3/4] ">
         <img src={`https://image.tmdb.org/t/p/original${item.poster_path}`} alt="anime-cover" className="object-cover w-full" />
 
-        <button className="flex justify-center items-center w-full bg-black/75 absolute top-0 h-full opacity-0 group-hover:opacity-100 transition ease-in-out duration-150">
+        <a href={`/movie/${item.id}`} className="flex justify-center items-center w-full bg-black/75 absolute top-0 h-full opacity-0 group-hover:opacity-100 transition ease-in-out duration-150">
           <RiPlayCircleLine fontSize={72} className="scale-0 group-hover:scale-100 transition ease-in-out duration-300" />
-        </button>
-        <p className="absolute top-0 text-black bg-white rounded-br-lg text-sm p-1 text-xs font-bold w-8 text-center shadow-md shadow-black">{ item.vote_average}</p>
+        </a>
+        <p className="absolute top-0 text-black bg-white rounded-br-lg text-sm p-1 text-xs font-bold w-8 text-center shadow-md shadow-black">{ item.vote_average.toFixed(1)}</p>
         <p className="absolute bottom-0 right-0 text-white bg-yellow-700 rounded-tl-lg text-sm p-1 text-xs shadow-md shadow-black">{item.original_language}</p>
       </div>
 

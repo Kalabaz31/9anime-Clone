@@ -36,7 +36,7 @@ const TopAnime = ({ headerTitle, data }) => {
           {data.map(
             (item, index) =>
               index !== 0 && (
-                <div className=" group w-full md:w-1/2 xl:w-full h-16 flex flex-row gap-4 items-center my-2 pr-2">
+                <div className=" group w-full md:w-1/2 xl:w-full h-16 flex flex-row gap-4 items-center my-2 pr-2" key={index}>
                   <h1 className=" h-min px-3 py-1 rounded-md  border-zinc-600 border text-2xl text-zinc-600 group-hover:text-white">{index + 1}</h1>
                   <img src={`https://image.tmdb.org/t/p/original${item.poster_path}`} alt="anime-cover" className="w-10 h-full  rounded-md" />
                   <div className="flex flex-col gap-1 items-start self-start overflow-hidden h-full ">

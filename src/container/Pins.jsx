@@ -10,7 +10,7 @@ const Pins = ({ headerTitle, data }) => {
       <h1 className="text-2xl"> {headerTitle} </h1>
 
       <div className="flex flex-row w-full flex-wrap justify-center">
-        {data.map((item) => (
+        {data && data.map((item) => (
           <Pin item={item} key={item.id}/>
         ))}
       </div>

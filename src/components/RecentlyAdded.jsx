@@ -2,15 +2,7 @@ import React, { useState, useEffect } from "react";
 
 import { recentlyAdded } from "../utils/Data";
 
-import { RiEyeLine } from "react-icons/ri";
-
-const btnHeaderStyle = "text-zinc-500  xl:text-sm";
-const btnActiveHeaderStyle = "text-white  xl:text-sm";
-
-const tabContentStyle = "";
-
 const RecentlyAdded = () => {
-  const [active, setActive] = useState(0);
 
   return (
     <div className="bg-neutral-900 flex flex-col gap-3 py-3 rounded-lg ">
@@ -23,7 +15,7 @@ const RecentlyAdded = () => {
       <div className="flex flex-col w-full">
         <div className="flex flex-col md:flex-row flex-wrap xl:flex-col justify-between px-4">
           {recentlyAdded.map((anime) => (
-            <div className=" group w-full md:w-1/2 xl:w-full h-16 flex flex-row gap-4 items-center my-2 pr-2">
+            <div className=" group w-full md:w-1/2 xl:w-full h-16 flex flex-row gap-4 items-center my-2 pr-2" key={anime.rank}>
               <img src={anime.cover} alt="anime-cover" className="w-10 h-full  rounded-md" />
               <div className="flex flex-col gap-1 items-start self-start overflow-hidden h-full ">
                 <a href="#" className="text-sm text-zinc-400 hover:text-white truncate w-full	 ">

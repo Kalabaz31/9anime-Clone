@@ -11,14 +11,14 @@ const mdMenuStyle =
 
 const menuElementStyle = "peer cursor-pointer flex w-full p-3 px-5 md:px-10 text-sm hover:bg-black/10 border-b-2 border-black/10 md:border-0";
 const subMenuStyle =
-  "py-2 flex flex-row flex-wrap bg-neutral-900 md:absolute md:top-0 md:left-32 md:-z-10 md:h-full md:w-[500px] md:rounded-lg md:pl-5 md:flex md:flex-row md:flex-wrap bg-neutral-900 md:origin-left md:scale-x-0  md:peer-hover:scale-x-100 md:peer-hover:transition-all md:peer-hover:duration-150 md:peer-hover:ease-in-out";
+  "py-2 flex flex-row flex-wrap bg-neutral-900 md:absolute md:top-0 md:left-32 md:-z-20 md:h-full md:w-[500px] md:rounded-lg md:pl-5 md:flex md:flex-row md:flex-wrap bg-neutral-900 md:origin-left md:scale-x-0  md:peer-hover:scale-x-100 md:peer-hover:transition-all md:peer-hover:duration-150 md:peer-hover:ease-in-out";
 const mdGenresSubMenuStyle =
-  "hidden md:py-2 md:absolute md:top-0 md:left-32 md:-z-10 md:h-full md:w-[500px] md:rounded-lg md:pl-5 md:flex md:flex-row md:flex-wrap bg-neutral-900 md:origin-left md:scale-x-0  md:peer-hover:scale-x-100 md:peer-hover:transition-all md:peer-hover:duration-150 md:peer-hover:ease-in-out`";
+  "hidden md:py-2 md:absolute md:top-0 md:left-32 md:-z-20 md:h-full md:w-[500px] md:rounded-lg md:pl-5 md:flex md:flex-row md:flex-wrap bg-neutral-900 md:origin-left md:scale-x-0  md:peer-hover:scale-x-100 md:peer-hover:transition-all md:peer-hover:duration-150 md:peer-hover:ease-in-out`";
 const mdTypesSubMenuStyle =
-  "hidden md:py-2 md:absolute md:top-0 md:left-32 md:-z-10 md:h-full md:w-32 md:rounded-lg md:pl-5 md:flex md:flex-col bg-neutral-900 md:origin-left md:scale-x-0  md:peer-hover:scale-x-100 md:peer-hover:transition-all md:peer-hover:duration-150 md:peer-hover:ease-in-out`";
+  "hidden md:py-2 md:absolute md:top-0 md:left-32 md:-z-20 md:h-full md:w-32 md:rounded-lg md:pl-5 md:flex md:flex-col bg-neutral-900 md:origin-left md:scale-x-0  md:peer-hover:scale-x-100 md:peer-hover:transition-all md:peer-hover:duration-150 md:peer-hover:ease-in-out`";
 const subGenresMenuElementStyle = "flex h-fit text-xs px-5 py-1 w-1/4 hover:bg-white/5 text-zinc-500";
 const subTypesMenuElementStyle = "flex h-fit text-xs px-5 py-1 w-full hover:bg-white/5 text-zinc-500";
-const Navbar = () => {
+const Navbar = ({genres}) => {
   const [isToggleMenu, setToggleMenu] = useState(false);
   const [showGenres, setShowGenres] = useState(false);
   const [showTypes, setShowTypes] = useState(false);
@@ -30,7 +30,6 @@ const Navbar = () => {
 
   const handleToggle = (param, setParam) => {
     if (windowDimensions.width < 768) {
-      console.log(param);
       setParam(!param);
     }
   };
@@ -64,7 +63,7 @@ const Navbar = () => {
   }, []);
 
   return (
-    <div className="flex flex-row px-2  items-center gap-2 w-full relative z-10">
+    <div className="flex flex-row px-2  items-center gap-2 w-full relative z-20">
       {/* Mobile menu toggle bar */}
 
       <div className=" flex flex-row justify-between items-center  gap-4 w-full">
@@ -80,14 +79,14 @@ const Navbar = () => {
                   HOME
                 </a>
               </div>
-              <div className>
+              <div >
                 <a className={menuElementStyle} onClick={() => handleToggle(showGenres, setShowGenres)}>
                   GENRES
                 </a>
                 <div className={showGenres ? subMenuStyle : mdGenresSubMenuStyle}>
-                  {categories.map((category) => (
-                    <a href="/a" key={category} className={subGenresMenuElementStyle}>
-                      {category}
+                  {genres.map((category) => (
+                    <a href="/a" key={category.id} className={subGenresMenuElementStyle}>
+                      {category.name}
                     </a>
                   ))}
                 </div>
@@ -127,7 +126,7 @@ const Navbar = () => {
             </div>
           </div>
 
-          <a className="flex items-center">
+          <a href="/" className="flex items-center">
             <img src="https://9anime.vc/images/logo.png" alt="logo" className="w-48" />
           </a>
           <div className="flex md:relative">

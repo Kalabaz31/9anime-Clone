@@ -2,7 +2,7 @@ import React from "react";
 
 import iconLogin from "../assets/images/footer-icon.png";
 
-const alphabets = ["All", "#", "0-9", "A", "B", "C", "D", "E", "F", "G", "H", "I", "G", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+const alphabets = ["All", "#", "0-9", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 
 const Footer = () => {
   return (
@@ -15,7 +15,7 @@ const Footer = () => {
 
           <div className="flex flex-row flex-wrap gap-2 ">
             {alphabets.map((alphabet) => (
-              <a href="#" className="w-8 h-8 flex items-center justify-center	text-sm bg-neutral-800 rounded-sm text-zinc-300 hover:bg-violet-900">
+              <a href="#" className="w-8 h-8 flex items-center justify-center	text-sm bg-neutral-800 rounded-sm text-zinc-300 hover:bg-violet-900" key={alphabet}>
                 {alphabet}
               </a>
             ))}
