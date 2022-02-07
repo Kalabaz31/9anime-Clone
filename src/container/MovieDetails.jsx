@@ -61,7 +61,7 @@ const MovieDetails = () => {
     <div className="flex flex-col gap-4">
       {movieVideos && (
         <div className="flex justify-center aspect-video ">
-          <ReactPlayer width="100%" height="100%"  url={`https://www.youtube.com/watch?v=${movieVideos[0]?.key}`} />
+          <ReactPlayer width="100%" height="100%" url={`https://www.youtube.com/watch?v=${movieVideos[0]?.key}`} />
         </div>
       )}
       {movieDetails && (
@@ -98,12 +98,14 @@ const MovieDetails = () => {
         <div className="flex flex-row overflow-hidden rounded-md p-4 gap-4 overflow-x-scroll snap-x scroll-px-4">
           {movieCast.cast.map((c) => (
             <div className="flex flex-col bg-violet-900/50 min-w-[8rem] min-h-[15rem] aspect-[2/3] rounded-md overflow-hidden shadow-md shadow-black/75 snap-start	" key={c.cast_id}>
-              <a href="" className="relative w-full overflow-hidden aspect-[3/4]">
+              <a href="" className="relative w-full overflow-hidden  h-[10rem]">
                 <img src={c.profile_path ? `${img_base}${c.profile_path}` : no_image} alt="" className="h-full object-fit w-full" />
               </a>
-              <a href="" className="text-neutral-200 font-bold px-2 pt-2 text-sm">
-                {c.name}
-              </a>
+              <h1 className="text-neutral-200 text-center font-bold px-2 pt-2 text-sm">
+                <a href="" >
+                  {c.name}
+                </a>
+              </h1>
               <p className="text-neutral-400 text-xs text-center truncate px-2">{c.character}</p>
             </div>
           ))}

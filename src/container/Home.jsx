@@ -14,6 +14,7 @@ import axios from "../utils/axios";
 
 import { popularMoviesUrl, topRatedMoviesUrl, movieGenresUrl } from "../utils/requests";
 import MovieDetails from "./MovieDetails";
+import CategoryPage from "../components/CategoryPage";
 
 const Home = () => {
   const [popularMoviesList, setPopularMoviesList] = useState([]);
@@ -63,6 +64,9 @@ const Home = () => {
           <div className="xl:w-3/4 ">
             <Routes>
               <Route path="/movie/:movieId" element={<MovieDetails />} />
+              <Route path="/category/:categoryId/page=:ppp" element={<CategoryPage />} />
+              <Route path="/category/:categoryId/" element={<CategoryPage />} />
+
               <Route path="/*" element={((<Slider data={popularMoviesList.slice(0, 10)} />), (<Pins headerTitle="Popular Movies" data={popularMoviesList} />))} />
             </Routes>
           </div>

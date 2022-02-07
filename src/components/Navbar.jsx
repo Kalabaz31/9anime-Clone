@@ -82,7 +82,7 @@ const Navbar = ({ genres }) => {
                 </a>
                 <div className={showGenres ? subMenuStyle : mdGenresSubMenuStyle}>
                   {genres.map((category) => (
-                    <a href="/a" key={category.id} className={subGenresMenuElementStyle}>
+                    <a href={`/category/${category.name.replace(" ", "-")}`} key={category.id} className={subGenresMenuElementStyle}>
                       {category.name}
                     </a>
                   ))}
